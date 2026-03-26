@@ -339,6 +339,11 @@ impl SlurmTask {
         self.add_opt(SBatchOption::Dependency(DependencyType::After { job_id }))
     }
 
+    /// add a job dependency for after ok return
+    pub fn job_dependency_after_ok(self, job_id: u64) -> Self {
+        self.add_opt(SBatchOption::Dependency(DependencyType::AfterOk { job_id }))
+    }
+
     /// specify a start delay for the sbatch task in seconds
     pub fn begin_delay_sec(self, delay_sec: usize) -> Self {
         self.add_opt(SBatchOption::BeginDelaySec(delay_sec))
